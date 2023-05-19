@@ -1,15 +1,71 @@
 # from djitellopy import Tello
 #import turtle
 import pygame
+clock = pygame.time.Clock()
+
+x = 60
+y = 60
+color = (255,255,255)
+background = (0,0,0)
 
 pygame.init()
 win = pygame.display.set_mode((500,500))
+win.fill(background)
 run = True
+
 while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-
+    pygame.display.flip()
+    pygame.draw.rect(win, color, pygame.Rect(x, y, 90, 90))
+    pressed = pygame.key.get_pressed()
+    if pressed[pygame.K_UP]:
+        y -= 1
+        if x<=0:
+          x=0
+        elif x>=400:
+          x=400
+        if y>=400:
+          y=400
+        elif y<=0:
+          y=0
+        win.fill(background)
+    if pressed[pygame.K_DOWN]: 
+        y += 1
+        if x<=0:
+          x=0
+        elif x>=400:
+          x=400
+        if y>=400:
+          y=400
+        elif y<=0:
+          y=0
+        win.fill(background)
+    if pressed[pygame.K_RIGHT]:
+        x += 1
+        if x<=0:
+          x=0
+        elif x>=400:
+          x=400
+        if y>=400:
+          y=400
+        elif y<=0:
+          y=0
+        win.fill(background)
+    if pressed[pygame.K_LEFT]: 
+        x -= 1
+        if x<=0:
+          x=0
+        elif x>=400:
+          x=400
+        if y>=400:
+          y=400
+        elif y<=0:
+          y=0
+        win.fill(background)
+    pygame.display.update()
+    clock.tick(60)
 
 # # tello = Tello()
 
